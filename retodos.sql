@@ -26,7 +26,7 @@ AS SELECT * FROM Libros
 WHERE (titulo LIKE @titulo) or (editorial LIKE @editorial) or (autor LIKE @autor);
 go
 
-CREATE PROC sp_modificar_libro --Procedimiento para modificar un libro
+CREATE PROC sp_modificar_libro 
 @codigo int,
 @titulo varchar(50),
 @autor varchar(50),
@@ -36,7 +36,7 @@ CREATE PROC sp_modificar_libro --Procedimiento para modificar un libro
 @accion varchar(50) OUTPUT 
 AS
 IF (@accion = '1')
-BEGIN --AQUÍ SE PUEDE COLOCAR UNA PARTE DE CÓDIGO OARA HACER QUE SE GENERE AUTOMÁTICAMENTE CON UN FORMATO DISTINTO
+BEGIN 
 	INSERT INTO Libros (codigo, titulo, autor, editorial, precio, cantidad)
 	VALUES (@codigo, @titulo, @autor, @editorial, @precio, @cantidad)
 	SET @accion = 'Libro ingresado correctamente'
